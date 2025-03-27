@@ -1,7 +1,5 @@
-const API_URL = 'https://react-fast-pizza-api.onrender.com/api';
-
 export async function getMenu() {
-  const res = await fetch(`${API_URL}/menu`);
+  const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/menu`);
 
   // fetch won't throw error on 400 errors (e.g. when URL is wrong), so we need to do it manually. This will then go into the catch block, where the message is set
   if (!res.ok) throw Error('Failed getting menu');
@@ -11,7 +9,7 @@ export async function getMenu() {
 }
 
 export async function getOrder(id: number) {
-  const res = await fetch(`${API_URL}/order/${id}`);
+  const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/order/${id}`);
   if (!res.ok) throw Error(`Couldn't find order #${id}`);
 
   const { data } = await res.json();
@@ -21,7 +19,7 @@ export async function getOrder(id: number) {
 // FIXME
 export async function createOrder(newOrder: { items: string[] }) {
   try {
-    const res = await fetch(`${API_URL}/order`, {
+    const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/order`, {
       method: 'POST',
       body: JSON.stringify(newOrder),
       headers: {
@@ -40,7 +38,7 @@ export async function createOrder(newOrder: { items: string[] }) {
 // FIXME
 export async function updateOrder(id: number, updateObj: { status: string }) {
   try {
-    const res = await fetch(`${API_URL}/order/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/order/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(updateObj),
       headers: {
