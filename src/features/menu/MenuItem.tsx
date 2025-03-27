@@ -1,4 +1,4 @@
-import { formatCurrency } from '../../utils/helpers';
+import { formatCurrency } from '@utils/helpers';
 
 function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: any }>) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
