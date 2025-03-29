@@ -1,3 +1,6 @@
+import { CreateOrderResponse } from '@app/models/CreateOrderResponse';
+import IOrder from '@app/models/IOrder';
+
 export async function getMenu() {
   const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/menu`);
 
@@ -16,8 +19,7 @@ export async function getOrder(id: string) {
   return data;
 }
 
-// FIXME
-export async function createOrder(newOrder: { items: string[] }) {
+export async function createOrder(newOrder: CreateOrderResponse): Promise<IOrder> {
   try {
     const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/order`, {
       method: 'POST',
