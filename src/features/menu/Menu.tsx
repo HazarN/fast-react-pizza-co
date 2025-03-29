@@ -16,7 +16,6 @@ function Menu() {
   );
 }
 
-// React Router loader function
 export const loader = async () => await getMenu();
 
 export default Menu;

@@ -1,7 +1,8 @@
+import IPizza from '@app/interfaces/IPizza';
 import { formatCurrency } from '@utils/helpers';
 
-function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: any }>) {
-  const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: IPizza }>) {
+  const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
   return (
     <li>
