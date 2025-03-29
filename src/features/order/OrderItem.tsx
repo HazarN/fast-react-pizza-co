@@ -1,4 +1,4 @@
-import { formatCurrency } from '@utils/helpers';
+import { formatCurrency } from '@app/utils/formatters';
 
 function OrderItem({
   item,

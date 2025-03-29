@@ -2,9 +2,9 @@
 import { useLoaderData } from 'react-router-dom';
 
 import IOrder from '@app/models/IOrder';
+import { calcMinutesLeft, formatCurrency, formatDate } from '@app/utils/formatters';
 import { type OrderParams } from '@models/OrderParams';
 import { getOrder } from '@services/apiRestaurant';
-import { calcMinutesLeft, formatCurrency, formatDate } from '@utils/helpers';
 
 function Order() {
   const order = useLoaderData();

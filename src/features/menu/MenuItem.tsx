@@ -1,5 +1,5 @@
 import IPizza from '@app/models/IPizza';
-import { formatCurrency } from '@utils/helpers';
+import { formatCurrency } from '@app/utils/formatters';
 
 function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: IPizza }>) {
   const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
