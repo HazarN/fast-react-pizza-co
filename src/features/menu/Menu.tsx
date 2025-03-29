@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 
+import IPizza from '@app/models/IPizza';
 import MenuItem from '@features/menu/MenuItem';
-import IPizza from '@interfaces/IPizza';
 import { getMenu } from '@services/apiRestaurant';
 
 function Menu() {

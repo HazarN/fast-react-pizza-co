@@ -1,4 +1,4 @@
-import IPizza from '@app/interfaces/IPizza';
+import IPizza from '@app/models/IPizza';
 import { formatCurrency } from '@utils/helpers';
 
 function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: IPizza }>) {

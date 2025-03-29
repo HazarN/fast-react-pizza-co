@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@app': pathResolve('src'),
+        '@models': pathResolve('src/models'),
         '@ui': pathResolve('src/ui'),
         '@features': pathResolve('src/features'),
         '@services': pathResolve('src/services'),

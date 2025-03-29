@@ -1,3 +1,4 @@
+import SearchOrder from '@features/order/SearchOrder';
 import { Link } from 'react-router-dom';
 
 function Header() {
@@ -5,7 +6,7 @@ function Header() {
     <header>
       <Link to='/'>Fast React Pizza Co.</Link>
 
-      <p>Hello World!</p>
+      <SearchOrder />
     </header>
   );
 }

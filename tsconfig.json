@@ -24,10 +24,11 @@
     "baseUrl": ".",
     "paths": {
       "@app/*": ["src/*"],
+      "@models/*": ["src/models/*"],
       "@features/*": ["src/features/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
-      "@interfaces/*": ["src/interfaces/*"],
+      "@interfaces/*": ["src/models/*"],
       "@ui/*": ["src/ui/*"]
     }
   },

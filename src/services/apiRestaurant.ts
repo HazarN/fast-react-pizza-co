@@ -8,7 +8,7 @@ export async function getMenu() {
   return data;
 }
 
-export async function getOrder(id: number) {
+export async function getOrder(id: string) {
   const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/order/${id}`);
   if (!res.ok) throw Error(`Couldn't find order #${id}`);
 
