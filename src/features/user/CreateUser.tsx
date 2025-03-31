@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
+import Button from '@app/ui/Buttons/Button';
 import { useAppDispatch } from '@app/utils/reduxStore';
-import Button from '@ui/Button';
 import { useNavigate } from 'react-router-dom';
 import { updateUsername } from './userSlice';
 

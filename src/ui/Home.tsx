@@ -1,6 +1,6 @@
 import { useAppSelector } from '@app/utils/reduxStore';
 import CreateUser from '@features/user/CreateUser';
-import Button from './Button';
+import Button from './Buttons/Button';
 
 function Home() {
   const username = useAppSelector((state) => state.user.username);

@@ -16,9 +16,11 @@ const cartSlice = createSlice({
     addPizza: (state: CartState, action: PayloadAction<ICartItem>) => {
       state.items.push(action.payload);
     },
+
     removePizza: (state: CartState, action: PayloadAction<number>) => {
       state.items = state.items.filter((pizza) => pizza.pizzaId !== action.payload);
     },
+
     incrementNoOfPizzas: (state: CartState, action: PayloadAction<number>) => {
       const pizza = state.items.find((pizza) => pizza.pizzaId === action.payload);
 
@@ -27,18 +29,18 @@ const cartSlice = createSlice({
       pizza.quantity++;
       pizza.totalPrice = pizza.unitPrice * pizza.quantity;
     },
+
     decrementNoOfPizzas: (state: CartState, action: PayloadAction<number>) => {
       const pizza = state.items.find((pizza) => pizza.pizzaId === action.payload);
 
       if (!pizza) return;
 
-      if (pizza.quantity > 1) {
-        pizza.quantity--;
-        pizza.totalPrice = pizza.unitPrice * pizza.quantity;
-      } else {
-        state.items = state.items.filter((pizza) => pizza.pizzaId !== action.payload);
-      }
+      pizza.quantity--;
+      pizza.totalPrice = pizza.unitPrice * pizza.quantity;
+
+      if (pizza.quantity === 0) cartSlice.caseReducers.removePizza(state, action);
     },
+
     clearCart: (state: CartState) => {
       state.items = [];
     },

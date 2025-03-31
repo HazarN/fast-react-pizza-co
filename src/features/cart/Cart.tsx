@@ -1,36 +1,18 @@
-import { useAppSelector } from '@app/utils/reduxStore';
-import CartItem from '@features/cart/CartItem';
-import Button from '@ui/Button';
-import LinkButton from '@ui/LinkButton';
+import { useAppDispatch, useAppSelector } from '@app/utils/reduxStore';
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+import CartItem from '@features/cart/CartItem';
+import { clearCart } from '@features/cart/cartSlice';
+import EmptyCart from '@features/cart/EmptyCart';
+
+import Button from '@app/ui/Buttons/Button';
+import LinkButton from '@app/ui/Buttons/LinkButton';
 
 function Cart() {
-  const cart = fakeCart;
-
+  const cart = useAppSelector((state) => state.cart.items);
   const username = useAppSelector((state) => state.user.username);
+  const dispatch = useAppDispatch();
+
+  if (!cart.length) return <EmptyCart />;
 
   return (
     <div className='py-3 px-4'>
@@ -48,7 +30,10 @@ function Cart() {
         <Button to='/order/new' type='primary'>
           Order pizzas
         </Button>
-        <Button type='secondary'>Clear cart</Button>
+
+        <Button type='secondary' onClick={() => dispatch(clearCart())}>
+          Clear cart
+        </Button>
       </div>
     </div>
   );

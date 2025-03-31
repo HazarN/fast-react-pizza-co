@@ -1,9 +1,14 @@
-import { ICartItem } from '@models/ICartItem';
-import Button from '@ui/Button';
 import { formatCurrency } from '@utils/formatters';
+import { useAppDispatch } from '@utils/reduxStore';
+
+import { ICartItem } from '@models/ICartItem';
+
+import DeleteButton from '@app/ui/Buttons/DeleteButton';
+import UpdateQuantity from './UpdateQuantity';
 
 function CartItem({ item }: React.PropsWithChildren<{ item: ICartItem }>) {
   const { name, quantity, totalPrice } = item;
+  const dispatch = useAppDispatch();
 
   return (
     <li className='py-3 sm:flex sm:items-center sm:justify-between'>
@@ -13,7 +18,10 @@ function CartItem({ item }: React.PropsWithChildren<{ item: ICartItem }>) {
       <div className='flex items-center justify-between sm:gap-4'>
         <p className='text-sm font-bold'>{formatCurrency(totalPrice)}</p>
 
-        <Button type='small'>Delete</Button>
+        <div className='flex items-center gap-2'>
+          <UpdateQuantity pizzaId={item.pizzaId} />
+          <DeleteButton pizzaId={item.pizzaId} />
+        </div>
       </div>
     </li>
   );

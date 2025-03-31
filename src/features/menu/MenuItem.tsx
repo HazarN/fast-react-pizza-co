@@ -1,13 +1,18 @@
 import { ICartItem } from '@app/models/ICartItem';
-import { useAppDispatch } from '@app/utils/reduxStore';
+import Button from '@app/ui/Buttons/Button';
+import DeleteButton from '@app/ui/Buttons/DeleteButton';
+import { useAppDispatch, useAppSelector } from '@app/utils/reduxStore';
 import { addPizza } from '@features/cart/cartSlice';
 import IPizza from '@models/IPizza';
-import Button from '@ui/Button';
 import { formatCurrency } from '@utils/formatters';
 
 function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: IPizza }>) {
   const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const dispatch = useAppDispatch();
+
+  const isItemInCart = useAppSelector((state) =>
+    state.cart.items.some((item) => item.pizzaId === pizza.id)
+  );
 
   const handleAddPizza = () => {
     const cartItem: ICartItem = {
@@ -35,9 +40,13 @@ function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: IPizza }>) {
             <p className='text-sm uppercase'>Sold out</p>
           )}
 
-          <Button type='small' disabled={soldOut} onClick={handleAddPizza}>
-            Add to Cart
-          </Button>
+          {isItemInCart ? (
+            <DeleteButton pizzaId={pizza.id} />
+          ) : (
+            <Button type='small' disabled={soldOut} onClick={handleAddPizza}>
+              Add to Cart
+            </Button>
+          )}
         </div>
       </div>
     </li>
