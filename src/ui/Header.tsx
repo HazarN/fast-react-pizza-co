@@ -1,4 +1,4 @@
-import Username from '@app/features/user/Username';
+import Username from '@features/user/Username';
 import SearchOrder from '@features/order/SearchOrder';
 import { Link } from 'react-router-dom';
 

@@ -1,4 +1,4 @@
-import Button from '@app/ui/Button';
+import Button from '@ui/Button';
 import IPizza from '@models/IPizza';
 import { formatCurrency } from '@utils/formatters';
 

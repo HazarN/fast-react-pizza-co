@@ -1,4 +1,4 @@
-import { ICartItem } from '@app/models/ICartItem';
+import { ICartItem } from '@models/ICartItem';
 
 export default interface IOrder {
   id: string;

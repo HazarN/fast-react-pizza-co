@@ -1,5 +1,5 @@
-import { CreateOrderResponse } from '@app/models/CreateOrderResponse';
-import IOrder from '@app/models/IOrder';
+import { CreateOrderResponse } from '@models/CreateOrderResponse';
+import IOrder from '@models/IOrder';
 
 export async function getMenu() {
   const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/menu`);

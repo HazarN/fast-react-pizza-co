@@ -1,4 +1,4 @@
-import IGeolocation from '@app/models/IGeolocation';
+import IGeolocation from '@models/IGeolocation';
 
 export async function getAddress({ latitude, longitude }: IGeolocation) {
   const res = await fetch(

@@ -1,4 +1,4 @@
-import { ICartItem } from '@app/models/ICartItem';
+import { ICartItem } from '@models/ICartItem';
 import { formatCurrency } from '@utils/formatters';
 
 function OrderItem({ item }: React.PropsWithChildren<{ item: ICartItem }>) {

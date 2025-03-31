@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Button from '@app/ui/Button';
+import Button from '@ui/Button';
 
 function CreateUser() {
   const [username, setUsername] = useState('');

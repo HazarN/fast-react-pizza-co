@@ -1,5 +1,5 @@
-import { ICartItem } from '@app/models/ICartItem';
-import Button from '@app/ui/Button';
+import { ICartItem } from '@models/ICartItem';
+import Button from '@ui/Button';
 import { formatCurrency } from '@utils/formatters';
 
 function CartItem({ item }: React.PropsWithChildren<{ item: ICartItem }>) {
