@@ -1,11 +1,13 @@
-// reduxStore.ts
-import userReducer from '@features/user/userSlice'; // Adjust the import path as needed
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+
+import cartReducer from '@features/cart/cartSlice';
+import userReducer from '@features/user/userSlice';
 
 const store = configureStore({
   reducer: {
     user: userReducer,
+    cart: cartReducer,
   },
 });
 

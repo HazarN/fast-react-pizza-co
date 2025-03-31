@@ -2,8 +2,6 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { UserState } from '@models/UserState';
-
 // function getPosition(): Promise<GeolocationPosition> {
 //   return new Promise((resolve, reject) => {
 //     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -25,6 +23,10 @@ import { UserState } from '@models/UserState';
 //   // 3) Then we return an object with the data that we are interested in
 //   return { position, address };
 // }
+
+export type UserState = {
+  username: string;
+};
 
 const initialState: UserState = {
   username: '',
