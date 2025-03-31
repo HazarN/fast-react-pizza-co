@@ -1,3 +1,4 @@
+import { useAppSelector } from '@app/utils/reduxStore';
 import CartItem from '@features/cart/CartItem';
 import Button from '@ui/Button';
 import LinkButton from '@ui/LinkButton';
@@ -29,11 +30,13 @@ const fakeCart = [
 function Cart() {
   const cart = fakeCart;
 
+  const username = useAppSelector((state) => state.user.username);
+
   return (
     <div className='py-3 px-4'>
       <LinkButton to='/menu'>&larr; Back to menu</LinkButton>
 
-      <h2 className='mt-7 text-xl font-semibold'>Your cart, %NAME%</h2>
+      <h2 className='mt-7 text-xl font-semibold'>Your cart, {username}</h2>
 
       <ul className='divide-y divide-stone-200 border-b mt-3'>
         {cart.map((item) => (

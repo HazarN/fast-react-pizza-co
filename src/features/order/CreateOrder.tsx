@@ -3,6 +3,7 @@ import { ActionFunctionArgs, Form, redirect, useActionData, useNavigation } from
 import { FormErrors } from '@app/models/FormErrors';
 import Button from '@app/ui/Button';
 import { isValidPhone } from '@app/utils/formValidation';
+import { useAppSelector } from '@app/utils/reduxStore';
 import { CreateOrderResponse } from '@models/CreateOrderResponse';
 import { createOrder } from '@services/apiRestaurant';
 
@@ -39,18 +40,27 @@ function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
 
+  const username = useAppSelector((state) => state.user.username);
+  const firstName = username?.split(' ').at(0);
+
   return (
     <div className='px-4 py-6'>
       <h2 className='text-xl mb-8 font-semibold'>Ready to order? Let's go!</h2>
 
       <Form method='POST'>
         <div className='mb-5 flex flex-col gap-2 sm:flex-row sm:items-center'>
-          <label className='sm:basis-40'>First Name</label>
-          <input type='text' className='input grow' name='customer' required />
+          <label className='capitalize sm:basis-40'>First Name</label>
+          <input
+            type='text'
+            className='input grow'
+            name='customer'
+            required
+            defaultValue={firstName}
+          />
         </div>
 
         <div className='mb-5 flex flex-col gap-2 sm:flex-row sm:items-center'>
-          <label className='sm:basis-40'>Phone number</label>
+          <label className='capitalize sm:basis-40'>Phone number</label>
           <div className='grow'>
             <input type='tel' className='input w-full' name='phone' required />
             {formErrors?.phone && (
@@ -63,7 +73,7 @@ function CreateOrder() {
         </div>
 
         <div className='mb-5 flex flex-col gap-2 sm:flex-row sm:items-center'>
-          <label className='sm:basis-40'>Address</label>
+          <label className='capitalize sm:basis-40'>Address</label>
           <div className='grow'>
             <input type='text' className='input w-full' name='address' required />
           </div>

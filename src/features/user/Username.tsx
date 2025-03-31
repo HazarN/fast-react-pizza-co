@@ -1,5 +1,11 @@
+import { useAppSelector } from '@utils/reduxStore';
+
 function Username() {
-  return <div className='hidden md:block text-sm'>Hazar</div>;
+  const username = useAppSelector((state) => state.user.username);
+
+  if (!username) return null;
+
+  return <div className='hidden md:block text-sm'>{username}</div>;
 }
 
 export default Username;

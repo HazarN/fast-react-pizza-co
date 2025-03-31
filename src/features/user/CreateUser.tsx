@@ -1,12 +1,25 @@
 import { useState } from 'react';
 
+import { useAppDispatch } from '@app/utils/reduxStore';
 import Button from '@ui/Button';
+import { useNavigate } from 'react-router-dom';
+import { updateUsername } from './userSlice';
 
 function CreateUser() {
+  // Local state to get the user input
   const [username, setUsername] = useState('');
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    if (!username) return;
+
+    dispatch(updateUsername(username));
+
+    navigate('/menu');
   }
 
   return (
