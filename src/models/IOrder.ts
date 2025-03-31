@@ -1,4 +1,4 @@
-import ICart from '@models/ICart';
+import { ICartItem } from '@app/models/ICartItem';
 
 export default interface IOrder {
   id: string;
@@ -7,5 +7,5 @@ export default interface IOrder {
   priorityPrice: number;
   orderPrice: number;
   estimatedDelivery: string;
-  cart: ICart;
+  cart: ICartItem[];
 }
