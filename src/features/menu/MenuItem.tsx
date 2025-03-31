@@ -1,9 +1,25 @@
-import Button from '@ui/Button';
+import { ICartItem } from '@app/models/ICartItem';
+import { useAppDispatch } from '@app/utils/reduxStore';
+import { addPizza } from '@features/cart/cartSlice';
 import IPizza from '@models/IPizza';
+import Button from '@ui/Button';
 import { formatCurrency } from '@utils/formatters';
 
 function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: IPizza }>) {
   const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+  const dispatch = useAppDispatch();
+
+  const handleAddPizza = () => {
+    const cartItem: ICartItem = {
+      pizzaId: pizza.id,
+      name,
+      unitPrice,
+      totalPrice: unitPrice,
+      quantity: 1,
+    };
+
+    dispatch(addPizza(cartItem));
+  };
 
   return (
     <li className='flex gap-4'>
@@ -19,7 +35,9 @@ function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: IPizza }>) {
             <p className='text-sm uppercase'>Sold out</p>
           )}
 
-          <Button type='small'>Add to Cart</Button>
+          <Button type='small' disabled={soldOut} onClick={handleAddPizza}>
+            Add to Cart
+          </Button>
         </div>
       </div>
     </li>
