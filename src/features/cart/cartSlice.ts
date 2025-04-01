@@ -1,5 +1,6 @@
-import { ICartItem } from '@app/models/ICartItem';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { ICartItem } from '@models/ICartItem';
 
 type CartState = {
   items: ICartItem[];

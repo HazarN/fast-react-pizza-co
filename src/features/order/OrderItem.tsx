@@ -1,5 +1,6 @@
-import { ICartItem } from '@models/ICartItem';
 import { formatCurrency } from '@utils/formatters';
+
+import { ICartItem } from '@models/ICartItem';
 
 type Props = {
   item: ICartItem;

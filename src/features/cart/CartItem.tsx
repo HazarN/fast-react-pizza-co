@@ -3,8 +3,9 @@ import { useAppDispatch } from '@utils/reduxStore';
 
 import { ICartItem } from '@models/ICartItem';
 
-import DeleteButton from '@app/ui/Buttons/DeleteButton';
-import UpdateQuantity from './UpdateQuantity';
+import UpdateQuantity from '@features/cart/UpdateQuantity';
+
+import DeleteButton from '@ui/Buttons/DeleteButton';
 
 function CartItem({ item }: React.PropsWithChildren<{ item: ICartItem }>) {
   const { name, quantity, totalPrice } = item;

@@ -1,11 +1,11 @@
-import { useAppDispatch, useAppSelector } from '@app/utils/reduxStore';
+import { useAppDispatch, useAppSelector } from '@utils/reduxStore';
 
 import CartItem from '@features/cart/CartItem';
 import { clearCart } from '@features/cart/cartSlice';
 import EmptyCart from '@features/cart/EmptyCart';
 
-import Button from '@app/ui/Buttons/Button';
-import LinkButton from '@app/ui/Buttons/LinkButton';
+import Button from '@ui/Buttons/Button';
+import LinkButton from '@ui/Buttons/LinkButton';
 
 function Cart() {
   const cart = useAppSelector((state) => state.cart.items);

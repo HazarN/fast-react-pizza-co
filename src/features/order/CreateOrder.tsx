@@ -11,10 +11,10 @@ import { FormErrors } from '@models/FormErrors';
 
 import { clearCart } from '@features/cart/cartSlice';
 import EmptyCart from '@features/cart/EmptyCart';
+import { fetchAddress } from '@features/user/userSlice';
 
 import Button from '@ui/Buttons/Button';
 import { useState } from 'react';
-import { fetchAddress } from '../user/userSlice';
 
 function CreateOrder() {
   const [withPriority, setWithPriority] = useState(false);

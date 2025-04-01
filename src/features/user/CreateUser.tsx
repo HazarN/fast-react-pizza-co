@@ -1,9 +1,11 @@
 import { useState } from 'react';
-
-import Button from '@app/ui/Buttons/Button';
-import { useAppDispatch } from '@app/utils/reduxStore';
 import { useNavigate } from 'react-router-dom';
-import { updateUsername } from './userSlice';
+
+import { useAppDispatch } from '@utils/reduxStore';
+
+import { updateUsername } from '@features/user/userSlice';
+
+import Button from '@ui/Buttons/Button';
 
 function CreateUser() {
   // Local state to get the user input

@@ -1,8 +1,10 @@
 import { useLoaderData } from 'react-router-dom';
 
-import IPizza from '@models/IPizza';
-import MenuItem from '@features/menu/MenuItem';
 import { getMenu } from '@services/apiRestaurant';
+
+import IPizza from '@models/IPizza';
+
+import MenuItem from '@features/menu/MenuItem';
 
 function Menu() {
   const menu = useLoaderData() as Array<IPizza>;

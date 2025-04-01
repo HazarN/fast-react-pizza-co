@@ -1,6 +1,8 @@
-import { useAppDispatch } from '@app/utils/reduxStore';
+import { useAppDispatch } from '@utils/reduxStore';
+
+import { decrementNoOfPizzas, incrementNoOfPizzas } from '@features/cart/cartSlice';
+
 import Button from '@ui/Buttons/Button';
-import { decrementNoOfPizzas, incrementNoOfPizzas } from './cartSlice';
 
 type Props = {
   pizzaId: number;

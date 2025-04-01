@@ -3,15 +3,14 @@ import { useFetcher, useLoaderData } from 'react-router-dom';
 
 import { getOrder } from '@services/apiRestaurant';
 
-import { calcMinutesLeft, formatCurrency, formatDate } from '@app/utils/formatters';
+import { calcMinutesLeft, formatCurrency, formatDate } from '@utils/formatters';
 
 import IOrder from '@models/IOrder';
 import IPizza from '@models/IPizza';
-
 import { type OrderParams } from '@models/OrderParams';
 
 import OrderItem from '@features/order/OrderItem';
-import UpdateOrderPriority from './UpdateOrderPriority';
+import UpdateOrderPriority from '@features/order/UpdateOrderPriority';
 
 function Order() {
   const order = useLoaderData() as IOrder;

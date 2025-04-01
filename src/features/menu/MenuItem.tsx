@@ -1,10 +1,13 @@
-import { ICartItem } from '@app/models/ICartItem';
-import Button from '@app/ui/Buttons/Button';
-import DeleteButton from '@app/ui/Buttons/DeleteButton';
-import { useAppDispatch, useAppSelector } from '@app/utils/reduxStore';
-import { addPizza } from '@features/cart/cartSlice';
-import IPizza from '@models/IPizza';
 import { formatCurrency } from '@utils/formatters';
+import { useAppDispatch, useAppSelector } from '@utils/reduxStore';
+
+import { ICartItem } from '@models/ICartItem';
+import IPizza from '@models/IPizza';
+
+import { addPizza } from '@features/cart/cartSlice';
+
+import Button from '@ui/Buttons/Button';
+import DeleteButton from '@ui/Buttons/DeleteButton';
 
 function MenuItem({ pizza }: React.PropsWithChildren<{ pizza: IPizza }>) {
   const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;

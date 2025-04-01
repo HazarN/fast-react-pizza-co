@@ -1,4 +1,4 @@
-import { useAppSelector } from '@app/utils/reduxStore';
+import { useAppSelector } from '@utils/reduxStore';
 import CreateUser from '@features/user/CreateUser';
 import Button from './Buttons/Button';
 
