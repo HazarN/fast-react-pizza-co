@@ -6,7 +6,7 @@ type Props = {
   type: 'primary' | 'small' | 'circle' | 'secondary';
   disabled?: boolean;
   to?: string;
-  onClick?: (e: React.FormEvent) => void | (() => void);
+  onClick?: (e?: React.FormEvent) => void;
 };
 function Button({ children, disabled, to, type, onClick }: Props) {
   const base = `${

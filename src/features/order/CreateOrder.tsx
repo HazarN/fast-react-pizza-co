@@ -92,8 +92,8 @@ function CreateOrder() {
               <Button
                 type='small'
                 disabled={isLoadingAddress}
-                onClick={(e: React.FormEvent) => {
-                  e.preventDefault();
+                onClick={(e?: React.FormEvent) => {
+                  e!.preventDefault();
                   dispatch(fetchAddress());
                 }}
               >
