@@ -37,8 +37,7 @@ export async function createOrder(newOrder: CreateOrderResponse): Promise<IOrder
   }
 }
 
-// FIXME
-export async function updateOrder(id: number, updateObj: { status: string }) {
+export async function updateOrder(id: string, updateObj: Partial<IOrder>) {
   try {
     const res = await fetch(`${import.meta.env.VITE_BASE_API_URL}/order/${id}`, {
       method: 'PATCH',
@@ -49,7 +48,6 @@ export async function updateOrder(id: number, updateObj: { status: string }) {
     });
 
     if (!res.ok) throw Error();
-    // We don't need the data, so we don't return anything
   } catch (err) {
     throw Error('Failed updating your order');
   }

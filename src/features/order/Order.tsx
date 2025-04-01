@@ -11,9 +11,10 @@ import IPizza from '@models/IPizza';
 import { type OrderParams } from '@models/OrderParams';
 
 import OrderItem from '@features/order/OrderItem';
+import UpdateOrderPriority from './UpdateOrderPriority';
 
 function Order() {
-  const order = useLoaderData();
+  const order = useLoaderData() as IOrder;
   const { id, status, priority, priorityPrice, orderPrice, estimatedDelivery, cart } =
     order as IOrder;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
@@ -68,6 +69,8 @@ function Order() {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+
+      {!priority && <UpdateOrderPriority order={order} />}
     </div>
   );
 }
