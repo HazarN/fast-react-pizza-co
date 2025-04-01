@@ -1,35 +1,45 @@
-// import { getAddress } from '@services/apiGeocoding';
+import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getAddress } from '@services/apiGeocoding';
 
-// function getPosition(): Promise<GeolocationPosition> {
-//   return new Promise((resolve, reject) => {
-//     navigator.geolocation.getCurrentPosition(resolve, reject);
-//   });
-// }
+import IGeolocation from '@models/IGeolocation';
 
-// async function fetchAddress() {
-//   // 1) We get the user's geolocation position
-//   const positionObj = await getPosition();
-//   const position = {
-//     latitude: positionObj.coords.latitude,
-//     longitude: positionObj.coords.longitude,
-//   };
+function getPosition(): Promise<GeolocationPosition> {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
 
-//   // 2) Then we use a reverse geocoding API to get a description of the user's address, so we can display it the order form, so that the user can correct it if wrong
-//   const addressObj = await getAddress(position);
-//   const address = `${addressObj?.locality}, ${addressObj?.city} ${addressObj?.postcode}, ${addressObj?.countryName}`;
+export const fetchAddress = createAsyncThunk<
+  { position: IGeolocation | null; address: string },
+  void
+>('user/fetchAddress', async () => {
+  const positionObj = await getPosition();
+  const position = {
+    latitude: positionObj.coords.latitude,
+    longitude: positionObj.coords.longitude,
+  } as IGeolocation;
 
-//   // 3) Then we return an object with the data that we are interested in
-//   return { position, address };
-// }
+  const addressObj = await getAddress(position);
+  const address = `${addressObj?.locality}, ${addressObj?.city}, ${addressObj?.countryName}`;
+
+  return { position, address };
+});
 
 export type UserState = {
   username: string;
+  status: string;
+  address: string;
+  position: IGeolocation | null;
+  error: string | null;
 };
 
 const initialState: UserState = {
   username: '',
+  status: 'idle',
+  address: '',
+  position: null,
+  error: null,
 };
 
 const userSlice = createSlice({
@@ -39,6 +49,26 @@ const userSlice = createSlice({
     updateUsername: (state: UserState, action: PayloadAction<string>) => {
       state.username = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAddress.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(
+        fetchAddress.fulfilled,
+        (state, action: PayloadAction<{ position: IGeolocation | null; address: string }>) => {
+          state.status = 'idle';
+          state.position = action.payload.position;
+          state.address = action.payload.address;
+        }
+      )
+      .addCase(fetchAddress.rejected, (state, action) => {
+        state.status = 'error';
+        state.error = action.error?.message as string;
+        state.position = null;
+        state.address = '';
+      });
   },
 });
 
