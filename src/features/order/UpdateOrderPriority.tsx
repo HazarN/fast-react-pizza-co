@@ -2,14 +2,9 @@ import { ActionFunctionArgs, useFetcher } from 'react-router-dom';
 
 import { updateOrder } from '@services/apiRestaurant';
 
-import IOrder from '@models/IOrder';
-
 import Button from '@ui/Buttons/Button';
 
-type Props = {
-  order: IOrder;
-};
-function UpdateOrderPriority({ order }: Props) {
+function UpdateOrderPriority() {
   const fetcher = useFetcher();
 
   return (

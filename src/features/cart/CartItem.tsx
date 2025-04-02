@@ -1,5 +1,4 @@
 import { formatCurrency } from '@utils/formatters';
-import { useAppDispatch } from '@utils/reduxStore';
 
 import { ICartItem } from '@models/ICartItem';
 
@@ -9,7 +8,6 @@ import DeleteButton from '@ui/Buttons/DeleteButton';
 
 function CartItem({ item }: React.PropsWithChildren<{ item: ICartItem }>) {
   const { name, quantity, totalPrice } = item;
-  const dispatch = useAppDispatch();
 
   return (
     <li className='py-3 sm:flex sm:items-center sm:justify-between'>
