@@ -1,27 +1,69 @@
-# React + TypeScript + Vite
+# Fast React Pizza Co.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A pizza ordering application built with Vanilla React, TailwindCSS and a special API written by Jonas Schmedttman who is a lecturer in Udemy. This app design is also coming from him, i just implemented a TypeScript version of this project on my own.
 
-Currently, two official plugins are available:
+A detailed production is available, [deployed with AWS Amplify](https://main.d3mr8h1idwg5of.amplifyapp.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Pizza ordering with no authentication needed
+- A detailed menu section which comes from an API
+- Efficient Geolocation API usage
+- Responsive design with TailwindCSS
+- Advanced React Router features
+- Modern Redux Toolkit features
+- Organized `src/` structure
+- Optimized performances with the lazy loading features
+- Better performance with Vite and TypeScript
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installation
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+1. Clone the repository
+2. Install the dependencies:
+```
+npm install # 'npm i' for short
+```
+3. Create a .env file in the root directory and paste the followings:
+```
+VITE_PORT={optional}
+VITE_BASE_API_URL=https://react-fast-pizza-api.onrender.com/api
+VITE_GEOCODING_API_URL=https://api.bigdatacloud.net/data/reverse-geocode-client
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Starting the app
+
+Application can be run with two modes such as;
+```
+npm start
+```
+or
+```
+npm run dev
+```
+
+`dev` mode is for the on-change refreshment.
+
+## Project Structure
+```
+src/
+├── features/               # Specialized components with the global and local state
+   ├── cart/
+   ├── menu/
+   ├── order/
+   ├── user/
+├── models/                 # Some types and interfaces for the modern TypeScript features
+├── services/               # Useful functions that makes API bindings
+├── ui/                     # More generalized UI components
+├── utils/                  # More generalized application functions
+├── App.tsx                 # Main that will be rendered
+├── index.css               # the CSS file that's been using for this app
+├── main.tsx                # The file that render the App.tsx to the index.html
+├── vite-env.d.ts           # Declared Vite rules for TypeScript
+```
+
+## License
+
+This project is open source and available under the MIT License, the restaurant API and web design features are coming from Jonas Schmedttman who is a lecturer in Udemy. Special thanks to him :D
+
+
+
