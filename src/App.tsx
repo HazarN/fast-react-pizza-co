@@ -1,14 +1,24 @@
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Cart from '@features/cart/Cart';
-import Menu, { loader as menuLoader } from '@features/menu/Menu';
-import CreateOrder, { action as createOrderAction } from '@features/order/CreateOrder';
-import Order, { loader as orderLoader } from '@features/order/Order';
-import { action as updateOrderAction } from '@features/order/UpdateOrderPriority';
+// React Router functions
 
-import AppLayout from '@ui/AppLayout';
-import Error from '@ui/Error';
-import Home from '@ui/Home';
+import { loader as menuLoader } from '@features/menu/Menu';
+import { action as createOrderAction } from '@features/order/CreateOrder';
+import { loader as orderLoader } from '@features/order/Order';
+import { action as updateOrderAction } from '@features/order/UpdateOrderPriority';
+import Loader from './ui/Loader';
+
+// Lazy loading to improve the bundle size
+
+const Menu = lazy(() => import('@features/menu/Menu'));
+const Cart = lazy(() => import('@features/cart/Cart'));
+const CreateOrder = lazy(() => import('@features/order/CreateOrder'));
+const Order = lazy(() => import('@features/order/Order'));
+
+const AppLayout = lazy(() => import('@ui/AppLayout'));
+const Error = lazy(() => import('@ui/Error'));
+const Home = lazy(() => import('@ui/Home'));
 
 const router = createBrowserRouter([
   {
@@ -47,6 +57,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => <RouterProvider router={router} />;
+const App = () => (
+  <Suspense fallback={<Loader />}>
+    <RouterProvider router={router} />
+  </Suspense>
+);
 
 export default App;
